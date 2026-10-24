@@ -1,0 +1,119 @@
+:root {
+    --destaque: #4f7cff;
+    --texto: #e8ecf5;
+    --card: rgba(255 ,255, 255 ,0.07);
+
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", arial, sans-serif;
+    color: var(--texto);
+    
+    background:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 140px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 70px, #cfe3ff, transparent),
+    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
+    linear-gradient(180deg, #05060f 0%, #0b1030 100%);
+  background-size: 250px 220px, 250px 220px, 250px 220px, 250px 220px, 100% 100%;
+  background-attachment: fixed;
+}
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(120, 160, 255, 0.6);
+}
+
+label {
+  margin-right: 8px;
+}
+
+input,
+button {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+}
+
+input {
+  color-scheme: dark;
+  background: #1a2040;
+  color: var(--texto);
+}
+
+button {
+  background: var(--destaque);
+  color: #fff;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: transform 0.15s, background 0.15s;
+}
+
+button:hover {
+  background: #6b92ff;
+  transform: translateY(-2px);
+}
+
+#resultado {
+  margin-top: 32px;
+  padding: 24px;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 19px;
+}
+
+#resultado h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+#resultado h2 + p {
+  text-align: center;
+  color: #9fb4ff;
+}
+
+#resultado img {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  margin: 16px auto;
+  border-radius: 29px;
+}
+
+#resultado p {
+  line-height: 1.7;
+}
+
+#resultado a {
+  color: #8fb1ff;
+}
+
+#resultado small {
+  color: #9aa4c4;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #resultado {
+    padding: 16px;
+  }
+}
