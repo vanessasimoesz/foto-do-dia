@@ -1,119 +1,270 @@
-:root {
-    --destaque: #4f7cff;
-    --texto: #e8ecf5;
-    --card: rgba(255 ,255, 255 ,0.07);
-
+@@font-face {
+  font-family: "InstrumentSerif-Italic";
+  src: url("../fonte/InstrumentSerif-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonte/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "InstrumentSerif";
+  src: url("../fonte/InstrumentSerif-Regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --fundo: #09090b; 
+  --texto: #b0b1b6;
+  --texto-claro: #ffffff;
+  --card: rgba(255, 255, 255, 0.03);
+  --borda: rgba(255, 255, 255, 0.1);
+  --link: #9ec5ff;
+  --corpo: "Fraunces", sans-serif;
+  --title: "InstrumentSerif", serif;
+}
+
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: "Segoe UI", arial, sans-serif;
-    color: var(--texto);
-    
-    background:
-    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-    radial-gradient(1px 1px at 90px 140px, #fff, transparent),
-    radial-gradient(2px 2px at 160px 70px, #cfe3ff, transparent),
-    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
-    linear-gradient(180deg, #05060f 0%, #0b1030 100%);
-  background-size: 250px 220px, 250px 220px, 250px 220px, 250px 220px, 100% 100%;
-  background-attachment: fixed;
+  background-color: var(--fundo);
+  color: var(--texto);
+  font-family: var(--corpo);
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
-main {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 32px 16px 48px;
+
+/* =========================================
+                  Fundo
+   ========================================= */
+.fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background-image: radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+}
+
+
+.ring {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  width: 120vw; 
+  height: 120vw;
+  min-width: 800px;
+  min-height: 800px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='rgba(255, 255, 255, 0.12)' stroke-width='0.15' stroke-dasharray='0.5 1'%3E%3Ccircle cx='50' cy='50' r='12'/%3E%3Ccircle cx='50' cy='50' r='24'/%3E%3Ccircle cx='50' cy='50' r='36'/%3E%3Ccircle cx='50' cy='50' r='48'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  pointer-events: none; 
+  z-index: -1;
+}
+
+.feixe {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 150vw;
+  height: 100vh;
+  background: linear-gradient(105deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 55%);
+  transform-origin: bottom left;
+  transform: rotate(-35deg) translateX(-50%);
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, white 100%, transparent),
+    radial-gradient(1.5px 1.5px at 80% 40%, rgba(255,255,255,0.8) 100%, transparent),
+    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.5) 100%, transparent),
+    radial-gradient(1px 1px at 70% 90%, white 100%, transparent),
+    radial-gradient(1px 1px at 30% 10%, rgba(255,255,255,0.7) 100%, transparent);
+  background-size: 400px 400px;
+  opacity: 0.6;
+}
+
+/* =========================================
+   Cabeçalho 
+   ========================================= */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 30px auto;
+  padding: 12px 32px;
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--texto-claro);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.logo-icone {
+  font-size: 1.2rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  gap: 12px; 
+  padding: 5vh 20px 2vh; 
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: #fff;
-  text-shadow: 0 0 18px rgba(120, 160, 255, 0.6);
+  font-family: var(--title);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  color: var(--texto-claro);
+  line-height: 1.1;
+  margin-bottom: 0;
 }
 
-label {
-  margin-right: 8px;
+h1 em {
+  font-family: "InstrumentSerif-Italic", "InstrumentSerif", serif;
+  font-style: italic;
 }
 
-input,
-button {
-  padding: 10px 14px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-}
-
-input {
-  color-scheme: dark;
-  background: #1a2040;
+.subtitulo {
+  font-size: 1.3rem; 
+  line-height: 1.5;
+  max-width: 600px;
   color: var(--texto);
+  margin-bottom: 15px;
 }
 
-button {
-  background: var(--destaque);
-  color: #fff;
-  cursor: pointer;
-  margin-left: 6px;
-  transition: transform 0.15s, background 0.15s;
-}
-
-button:hover {
-  background: #6b92ff;
-  transform: translateY(-2px);
-}
-
-#resultado {
-  margin-top: 32px;
-  padding: 24px;
-  text-align: left;
+.controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
   background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 19px;
+  border: 1px solid var(--borda);
+  padding: 10px 10px 10px 25px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.controles label {
+  font-size: 1rem;
+  color: var(--texto-claro);
+}
+
+.controles input[type="date"] {
+  background: transparent;
+  border: none;
+  color: var(--texto-claro);
+  font-family: var(--corpo);
+  font-size: 1rem;
+  outline: none;
+  color-scheme: dark;
+}
+
+#buscar {
+  background-color: var(--texto-claro);
+  color: var(--fundo);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--corpo);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#buscar:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* =========================================
+   Resultado (API)
+   ========================================= */
+#resultado {
+  max-width: 700px; 
+  margin: 20px auto 40px; 
+  padding: 24px; 
+  font-size: 1rem; 
+  line-height: 1.6;
+  background-color: rgba(9, 9, 11, 0.7);
+  border: 1px solid var(--borda);
+  border-radius: 20px; 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  text-align: left;
 }
 
 #resultado h2 {
-  text-align: center;
-  margin-top: 0;
+  font-family: var(--title);
+  font-size: 2rem;          
+  font-weight: 400;
+  color: var(--texto-claro);
+  margin-bottom: 5px; 
 }
 
 #resultado h2 + p {
-  text-align: center;
-  color: #9fb4ff;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  font-size: 0.75rem; 
+  color: var(--texto);
+  margin-bottom: 15px; 
 }
 
 #resultado img {
   display: block;
   width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  margin: 16px auto;
-  border-radius: 29px;
-}
-
-#resultado p {
-  line-height: 1.7;
+  max-height: 50vh; 
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px; 
+  border: 1px solid var(--borda);
 }
 
 #resultado a {
-  color: #8fb1ff;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+#resultado a:hover {
+  border-bottom: 1px solid var(--link);
 }
 
 #resultado small {
-  color: #9aa4c4;
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  #resultado {
-    padding: 16px;
-  }
+  font-size: 0.9rem;
+  opacity: 0.7;
+  display: block;
+  margin-top: 20px;
 }
